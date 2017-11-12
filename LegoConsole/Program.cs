@@ -12,6 +12,11 @@ namespace LegoConsole
         static void Main(string[] args)
         {
             Legobot et = new Legobot();
+            et.ConnectToBrick();
+
+            et.Turn90Left();
+
+            Console.ReadLine();
         }
     }
 }
