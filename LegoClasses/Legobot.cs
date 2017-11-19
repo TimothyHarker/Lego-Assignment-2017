@@ -62,6 +62,5 @@ namespace LegoClasses
             brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -30, 1000, false);
             await brick.BatchCommand.SendCommandAsync();
         }
-
     }
 }
