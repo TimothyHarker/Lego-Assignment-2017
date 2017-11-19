@@ -29,37 +29,39 @@ namespace LegoConsole
                     HomeArray[i] = HomeArray[i] + Co
                     i++;
                 }*/
-
-            Thread.Sleep(2000);
-            float distance = et.DetectDistance();
-            Console.WriteLine("Distance Detected: "+ distance);
-            while (distance > 6)
-            { 
-                et.Forward();
-                Thread.Sleep(2000);
-                distance = et.DetectDistance();
-                Console.WriteLine("Distance Detected: "+ distance);
-            }
-            et.DetectColour();
-            float ColourDetected = et.DetectColour();
-            Console.WriteLine("Colour Detected: "+ ColourDetected);
-            if (ColourDetected == 0)                                               
+            bool RainbowDetected;
+            RainbowDetected = false;
+            while (RainbowDetected == false)
             {
                 Thread.Sleep(2000);
-                et.Reverse();
-                Thread.Sleep(2000);
-                et.Turn15Right();
+                float distance = et.DetectDistance();
+                Console.WriteLine("Distance Detected: " + distance);
+                while (distance > 6)
+                {
+                    et.Forward();
+                    Thread.Sleep(2000);
+                    distance = et.DetectDistance();
+                    Console.WriteLine("Distance Detected: " + distance);
+                }
+                et.DetectColour();
+                float ColourDetected = et.DetectColour();
+                Console.WriteLine("Colour Detected: " + ColourDetected);
+                if (ColourDetected == 0)
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn15Right();
+                }
+                else
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn15Left();
+                }
+                Console.ReadLine();
             }
-            else
-            {
-                Thread.Sleep(2000);
-                et.Reverse();
-                Thread.Sleep(2000);
-                et.Turn15Left();
-
-
-            }
-            Console.ReadLine();
         }
     }
 }
