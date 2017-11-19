@@ -22,14 +22,14 @@ namespace LegoClasses
 
         public async void Forward()
         {
-            await brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.A | OutputPort.D, 30, 1000, false);
+            await brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.A | OutputPort.D, 20, 1000, false);
             //brick.BatchCommand.TurnMotorAtPower(OutputPort.A | OutputPort.D, 30);
             //await brick.BatchCommand.SendCommandAsync();
         }
 
         public async void Reverse()
         {
-            await brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.A | OutputPort.D, -30, 1000, false);
+            await brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.A | OutputPort.D, -35, 1000, false);
         }
 
         public async void Stop()
@@ -39,15 +39,15 @@ namespace LegoClasses
 
         public async void Turn15Right()
         {
-            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, 30, 300, false);
-            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -30, 300, false);
+            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, 40, 300, false);
+            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -40, 300, false);
             await brick.BatchCommand.SendCommandAsync();
         }
 
         public async void Turn15Left()
         {
-            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -30, 300, false);
-            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, 30, 300, false);
+            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -40, 300, false);
+            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, 40, 300, false);
             await brick.BatchCommand.SendCommandAsync();
         }
 
