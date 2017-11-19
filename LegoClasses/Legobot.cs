@@ -29,7 +29,7 @@ namespace LegoClasses
 
         public async void Reverse()
         {
-            await brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A | OutputPort.D, -30);
+            await brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.A | OutputPort.D, -30, 1000, false);
         }
 
         public async void Stop()
@@ -77,7 +77,10 @@ namespace LegoClasses
             while (i < 10)
             {
                 Colours[i] = Colours[i] + brick.Ports[InputPort.Two].SIValue;
+                Console.WriteLine("ColourArray" + Colours[i]);
                 i++;
+                Thread.Sleep(100);
+
             }
 
             Colours.Sum();

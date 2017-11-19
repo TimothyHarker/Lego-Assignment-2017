@@ -15,6 +15,21 @@ namespace LegoConsole
         {
             Legobot et = new Legobot();
             et.ConnectToBrick();
+            /*    Home home = new Home();
+                et.ConnectToBrick();
+
+                float[] HomeArray = new float[2];
+                int i = 0;
+                if (home.GoHome == 1)
+                {
+                    while (et.DetectColour )
+                }
+                while (i < 2)
+                {
+                    HomeArray[i] = HomeArray[i] + Co
+                    i++;
+                }*/
+
             Thread.Sleep(2000);
             float distance = et.DetectDistance();
             Console.WriteLine("Distance Detected: "+ distance);
@@ -28,7 +43,7 @@ namespace LegoConsole
             et.DetectColour();
             float ColourDetected = et.DetectColour();
             Console.WriteLine("Colour Detected: "+ ColourDetected);
-            if (ColourDetected == 0)
+            if (ColourDetected == 0)                                               
             {
                 Thread.Sleep(2000);
                 et.Reverse();
