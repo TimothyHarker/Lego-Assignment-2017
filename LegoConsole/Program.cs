@@ -29,8 +29,18 @@ namespace LegoConsole
                     HomeArray[i] = HomeArray[i] + Co
                     i++;
                 }*/
-            bool RainbowDetected;
-            RainbowDetected = false;
+            Console.WriteLine("Where is Home? \n",
+              "Enter 0 for BlackRed. \n",
+              "Enter 1 for BlueRed \n",
+              "Enter 2 for BlueYellow \n",
+              "Enter 3 for YellowBlack.");
+            int Home = Convert.ToInt32(Console.ReadLine());
+            while (Home > 3)
+            {
+                Console.WriteLine("Please enter a valid selection to continue.");
+                Home = Convert.ToInt32(Console.ReadLine());
+            }
+            bool RainbowDetected = false;
             while (RainbowDetected == false)
             {
                 Thread.Sleep(2000);
@@ -43,25 +53,140 @@ namespace LegoConsole
                     distance = et.DetectDistance();
                     Console.WriteLine("Distance Detected: " + distance);
                 }
+
                 et.DetectColour();
                 float ColourDetected = et.DetectColour();
                 Console.WriteLine("Colour Detected: " + ColourDetected);
-                if (ColourDetected == 0)
+
+                if (Home == 0)//BlackRedLoop
                 {
-                    Thread.Sleep(2000);
-                    et.Reverse();
-                    Thread.Sleep(2000);
-                    et.Turn15Right();
+                    if (ColourDetected == 5) //Red
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn15Right();
+                    }
+                    else if (ColourDetected == 0) //Black
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn15Left();
+                    }
+                    else if (ColourDetected == 3) //Blue
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn90Right();
+                    }
+                    else //1 = Yellow
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn90Left();
+                    }
                 }
-                else
+
+                else if (Home == 1) //BlueRed
                 {
-                    Thread.Sleep(2000);
-                    et.Reverse();
-                    Thread.Sleep(2000);
-                    et.Turn15Left();
+                    if (ColourDetected == 5) //Blue
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn15Right();
+                    }
+                    else if (ColourDetected == 3) //Red
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn15Left();
+                    }
+                    else if (ColourDetected == 1) //Yellow
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn90Right();
+                    }
+                    else //Black
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn90Left();
+                    }
                 }
-                Console.ReadLine();
+
+                else if (Home == 2)//BlueYellowLoop
+                {
+                    if (ColourDetected == 1) //Yellow
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn15Right();
+                    }
+                    else if (ColourDetected == 3) //Blue
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn15Left();
+                    }
+                    else if (ColourDetected == 0) //Black
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn90Right();
+                    }
+                    else //Red
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn90Left();
+                    }
+                }
+
+                else //BlackYellow Loop
+                {
+                    if (ColourDetected == 0) //Black
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn15Right();
+                    }
+                    else if (ColourDetected == 1) //Yellow
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn15Left();
+                    }
+                    else if (ColourDetected == 5) //Red
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn90Right();
+                    }
+                    else //3 = Blue
+                    {
+                        Thread.Sleep(2000);
+                        et.Reverse();
+                        Thread.Sleep(2000);
+                        et.Turn90Left();
+                    }
+                }
             }
+            Console.ReadLine();
         }
     }
 }
