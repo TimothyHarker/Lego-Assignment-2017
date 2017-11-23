@@ -67,7 +67,7 @@ namespace LegoClasses
 
         public float DetectDistance()
         {
-            return brick.Ports[InputPort.Three].SIValue;
+            return brick.Ports[InputPort.Two].SIValue;
         }
 
         public float DetectColour()
@@ -76,7 +76,7 @@ namespace LegoClasses
             int i = 0;
             while (i < 10)
             {
-                Colours[i] = Colours[i] + brick.Ports[InputPort.Two].SIValue;
+                Colours[i] = Colours[i] + brick.Ports[InputPort.Three].SIValue;
                 Console.WriteLine("ColourArray" + Colours[i]);
                 i++;
                 Thread.Sleep(100);
