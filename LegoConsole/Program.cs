@@ -29,6 +29,7 @@ namespace LegoConsole
                     HomeArray[i] = HomeArray[i] + Co
                     i++;
                 }*/
+            Console.WriteLine(et.DetectDistance());
             Console.WriteLine("Where is Home? \n",
               "Enter 0 for BlackRed. \n",
               "Enter 1 for BlueRed \n",
@@ -46,7 +47,7 @@ namespace LegoConsole
                 Thread.Sleep(2000);
                 float distance = et.DetectDistance();
                 Console.WriteLine("Distance Detected: " + distance);
-                while (distance > 6)
+                while (distance > 7)
                 {
                     et.Forward();
                     Thread.Sleep(2000);
@@ -185,8 +186,8 @@ namespace LegoConsole
                         et.Turn90Left();
                     }
                 }
+                Console.ReadLine();
             }
-            Console.ReadLine();
         }
     }
 }

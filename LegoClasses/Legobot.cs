@@ -15,9 +15,10 @@ namespace LegoClasses
 
         public async void ConnectToBrick()
         {
+            //brick = new Brick(new BluetoothCommunication("COM5"));
             brick = new Brick(new UsbCommunication());
             await brick.ConnectAsync();
-            brick.Ports[InputPort.Two].SetMode(ColorMode.Color);
+            //brick.Ports[InputPort.Two].SetMode(ColorMode.Color);
         }
 
         public async void Forward()
@@ -76,7 +77,7 @@ namespace LegoClasses
             int i = 0;
             while (i < 10)
             {
-                Colours[i] = Colours[i] + brick.Ports[InputPort.Three].SIValue;
+                Colours[i] = Colours[i] + brick.Ports[InputPort.Four].SIValue;
                 Console.WriteLine("ColourArray" + Colours[i]);
                 i++;
                 Thread.Sleep(100);
@@ -91,7 +92,7 @@ namespace LegoClasses
 
         public async void ReadColourTurn()
         {
-            float distance = brick.Ports[InputPort.Three].SIValue;
+            float distance = brick.Ports[InputPort.Four].SIValue;
             if (distance < 6)
             {
                 DetectColour();
