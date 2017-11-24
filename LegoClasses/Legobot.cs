@@ -66,6 +66,11 @@ namespace LegoClasses
             await brick.BatchCommand.SendCommandAsync();
         }
 
+        public async void BaseFound()
+        {
+            await brick.DirectCommand.PlayToneAsync(100, 1000, 1000);
+        }
+
         public float DetectDistance()
         {
             return brick.Ports[InputPort.Two].SIValue;

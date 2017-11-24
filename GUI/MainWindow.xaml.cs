@@ -104,7 +104,8 @@ namespace GUI
                     Debug.WriteLine(ColourTwo);
                 }
             }
-            
+
+            et.BaseFound();
             Debug.Write("Home Base Found");
 
         }
@@ -137,24 +138,23 @@ namespace GUI
                 Console.WriteLine("Colour Detected: " + ColourDetected);
 
                 //BlueRedLoop
-                if (ColourDetected == 5) //Blue
+                if (ColourDetected == 3) //Blue
                 {
                     Thread.Sleep(2000);
                     et.Reverse();
                     Thread.Sleep(2000);
                     et.Turn15Right();
-                    ColourOne = false;
-                    ColourTwo = false;
+                    ColourOne = true;
                     Debug.WriteLine(ColourOne);
                     Debug.WriteLine(ColourTwo);
                 }
-                else if (ColourDetected == 3) //Red
+                else if (ColourDetected == 5) //red
                 {
                     Thread.Sleep(2000);
                     et.Reverse();
                     Thread.Sleep(2000);
                     et.Turn15Left();
-                    ColourOne = true;
+                    ColourTwo = true;
                     Debug.WriteLine(ColourOne);
                     Debug.WriteLine(ColourTwo);
                 }
@@ -175,12 +175,13 @@ namespace GUI
                     et.Reverse();
                     Thread.Sleep(2000);
                     et.Turn90Left();
-                    ColourOne = true;
+                    ColourOne = false;
+                    ColourTwo = false;
                     Debug.WriteLine(ColourOne);
                     Debug.WriteLine(ColourTwo);
                 }
             }
-
+            et.BaseFound();
             Debug.Write("Home Base Found");
         }
 
@@ -255,7 +256,7 @@ namespace GUI
                     Debug.WriteLine(ColourTwo);
                 }
             }
-
+            et.BaseFound();
             Debug.Write("Home Base Found");
         }
 
@@ -330,7 +331,7 @@ namespace GUI
                     Debug.WriteLine(ColourTwo);
                 }
             }
-
+            et.BaseFound();
             Debug.Write("Home Base Found");
         }
     }
