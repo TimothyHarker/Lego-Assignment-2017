@@ -30,10 +30,10 @@ namespace LegoConsole
                     i++;
                 }*/
             Console.WriteLine(et.DetectDistance());
-            Console.WriteLine("Where is Home? \n",
-              "Enter 0 for BlackRed. \n",
-              "Enter 1 for BlueRed \n",
-              "Enter 2 for BlueYellow \n",
+            Console.WriteLine("Where is Home? \n" +
+              "Enter 0 for BlackRed. \n" +
+              "Enter 1 for BlueRed \n" +
+              "Enter 2 for BlueYellow \n" +
               "Enter 3 for YellowBlack.");
             int Home = Convert.ToInt32(Console.ReadLine());
             while (Home > 3)
@@ -47,10 +47,10 @@ namespace LegoConsole
                 Thread.Sleep(2000);
                 float distance = et.DetectDistance();
                 Console.WriteLine("Distance Detected: " + distance);
-                while (distance > 7)
+                while (distance > 6)
                 {
                     et.Forward();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(500);
                     distance = et.DetectDistance();
                     Console.WriteLine("Distance Detected: " + distance);
                 }
@@ -186,7 +186,6 @@ namespace LegoConsole
                         et.Turn90Left();
                     }
                 }
-                Console.ReadLine();
             }
         }
     }

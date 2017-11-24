@@ -18,19 +18,19 @@ namespace LegoClasses
             //brick = new Brick(new BluetoothCommunication("COM5"));
             brick = new Brick(new UsbCommunication());
             await brick.ConnectAsync();
-            //brick.Ports[InputPort.Two].SetMode(ColorMode.Color);
+            brick.Ports[InputPort.Four].SetMode(ColorMode.Color);
         }
 
         public async void Forward()
         {
-            await brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.A | OutputPort.D, 20, 1000, false);
+            await brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.A | OutputPort.D, 20, 250, false);
             //brick.BatchCommand.TurnMotorAtPower(OutputPort.A | OutputPort.D, 30);
             //await brick.BatchCommand.SendCommandAsync();
         }
 
         public async void Reverse()
         {
-            await brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.A | OutputPort.D, -35, 1000, false);
+            await brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.A | OutputPort.D, -35, 500, false);
         }
 
         public async void Stop()
@@ -54,15 +54,15 @@ namespace LegoClasses
 
         public async void Turn90Right()
         {
-            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, 30, 1000, false);
-            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -30, 1000, false);
+            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, 40, 1000, false);
+            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -40, 1000, false);
             await brick.BatchCommand.SendCommandAsync();
         }
 
         public async void Turn90Left()
         {
-            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, 30, 1000, false);
-            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -30, 1000, false);
+            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, 40, 1000, false);
+            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -40, 1000, false);
             await brick.BatchCommand.SendCommandAsync();
         }
 
