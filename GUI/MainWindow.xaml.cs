@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using System.Threading;
+using LegoClasses;
 
 namespace GUI
 {
@@ -20,9 +23,66 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        Legobot et = new Legobot();
+
         public MainWindow()
         {
             InitializeComponent();
+            et.ConnectToBrick();
+        }
+
+        private void RedBlackBTN_Click_1(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(et.DetectDistance());
+
+            bool RainbowDetected = false;
+            while (RainbowDetected == false)
+            {
+                Thread.Sleep(2000);
+                float distance = et.DetectDistance();
+                Debug.WriteLine("Distance Detected: " + distance);
+                while (distance > 6)
+                {
+                    et.Forward();
+                    Thread.Sleep(500);
+                    distance = et.DetectDistance();
+                    Debug.WriteLine("Distance Detected: " + distance);
+                }
+
+                et.DetectColour();
+                float ColourDetected = et.DetectColour();
+                Console.WriteLine("Colour Detected: " + ColourDetected);
+
+                //BlackRedLoop
+                if (ColourDetected == 5) //Red
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn15Right();
+                }
+                else if (ColourDetected == 0) //Black
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn15Left();
+                }
+                else if (ColourDetected == 3) //Blue
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn90Right();
+                }
+                else //1 = Yellow
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn90Left();
+                }
+            }
         }
     }
 }

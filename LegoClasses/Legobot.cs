@@ -90,27 +90,27 @@ namespace LegoClasses
             return ColourDetected;
         }
 
-        public async void ReadColourTurn()
-        {
-            float distance = brick.Ports[InputPort.Four].SIValue;
-            if (distance < 6)
-            {
-                DetectColour();
-                Console.WriteLine(DetectColour());
-                if (DetectColour() == 0)
-                {
-                    Stop();
-                    Reverse();
-                    Turn15Right();
-                }
-                else
-                {
-                    Stop();
-                    Reverse();
-                    Turn15Left();
-                }
-            }
-        }
+        //public async void ReadColourTurn()
+        //{
+        //    float distance = brick.Ports[InputPort.Four].SIValue;
+        //    if (distance < 6)
+        //    {
+        //        DetectColour();
+        //        Console.WriteLine(DetectColour());
+        //        if (DetectColour() == 0)
+        //        {
+        //            Stop();
+        //            Reverse();
+        //            Turn15Right();
+        //        }
+        //        else
+        //        {
+        //            Stop();
+        //            Reverse();
+        //            Turn15Left();
+        //        }
+        //    }
+        //}
 
     }
 }
