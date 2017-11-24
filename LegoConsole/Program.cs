@@ -55,6 +55,10 @@ namespace LegoConsole
                     Thread.Sleep(500);
                     distance = et.DetectDistance();
                     Console.WriteLine("Distance Detected: " + distance);
+                    if (distance > 147)
+                    {
+                        et.Reverse();
+                    }
                 }
 
                 et.DetectColour();
