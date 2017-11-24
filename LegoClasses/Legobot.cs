@@ -73,6 +73,11 @@ namespace LegoClasses
 
         public float DetectDistance()
         {
+            float vDistance = brick.Ports[InputPort.Two].SIValue;
+            if (vDistance > 143)
+            {
+                Reverse();
+            }
             return brick.Ports[InputPort.Two].SIValue;
         }
 
