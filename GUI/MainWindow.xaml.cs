@@ -61,43 +61,45 @@ namespace GUI
                 //BlackRedLoop
                 if (ColourDetected == 5) //Red
                 {
-                    ColourOne = true;
+
                     Thread.Sleep(2000);
                     et.Reverse();
                     Thread.Sleep(2000);
                     et.Turn15Right();
+                    ColourOne = true;
                     Debug.WriteLine(ColourOne);
                     Debug.WriteLine(ColourTwo);
                 }
                 else if (ColourDetected == 0) //Black
                 {
-                    ColourTwo = true;
                     Thread.Sleep(2000);
                     et.Reverse();
                     Thread.Sleep(2000);
                     et.Turn15Left();
+                    ColourTwo = true;
                     Debug.WriteLine(ColourOne);
                     Debug.WriteLine(ColourTwo);
                 }
                 else if (ColourDetected == 3) //Blue
                 {
-                    ColourOne = false;
-                    ColourTwo = false;
                     Thread.Sleep(2000);
                     et.Reverse();
                     Thread.Sleep(2000);
                     et.Turn90Right();
+                    ColourOne = false;
+                    ColourTwo = false;
                     Debug.WriteLine(ColourOne);
                     Debug.WriteLine(ColourTwo);
                 }
                 else //1 = Yellow
                 {
-                    ColourOne = false;
-                    ColourTwo = false;
+
                     Thread.Sleep(2000);
                     et.Reverse();
                     Thread.Sleep(2000);
                     et.Turn90Left();
+                    ColourOne = false;
+                    ColourTwo = false;
                     Debug.WriteLine(ColourOne);
                     Debug.WriteLine(ColourTwo);
                 }

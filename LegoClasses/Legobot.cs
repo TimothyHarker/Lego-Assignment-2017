@@ -15,8 +15,8 @@ namespace LegoClasses
 
         public async void ConnectToBrick()
         {
-            //brick = new Brick(new BluetoothCommunication("COM5"));
-            brick = new Brick(new UsbCommunication());
+            brick = new Brick(new BluetoothCommunication("COM4"));
+            //brick = new Brick(new UsbCommunication());
             await brick.ConnectAsync();
             brick.Ports[InputPort.Four].SetMode(ColorMode.Color);
         }
