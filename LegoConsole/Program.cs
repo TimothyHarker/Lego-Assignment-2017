@@ -42,6 +42,8 @@ namespace LegoConsole
                 Home = Convert.ToInt32(Console.ReadLine());
             }
             bool RainbowDetected = false;
+            bool PreviousColour = false;
+            bool CurrentColour = false;
             while (RainbowDetected == false)
             {
                 Thread.Sleep(2000);
@@ -59,38 +61,40 @@ namespace LegoConsole
                 float ColourDetected = et.DetectColour();
                 Console.WriteLine("Colour Detected: " + ColourDetected);
 
-                if (Home == 0)//BlackRedLoop
+                while(PreviousColour == false & CurrentColour == false )
                 {
-                    if (ColourDetected == 5) //Red
+                    if (Home == 0)//BlackRedLoop
                     {
-                        Thread.Sleep(2000);
-                        et.Reverse();
-                        Thread.Sleep(2000);
-                        et.Turn15Right();
-                    }
-                    else if (ColourDetected == 0) //Black
-                    {
-                        Thread.Sleep(2000);
-                        et.Reverse();
-                        Thread.Sleep(2000);
-                        et.Turn15Left();
-                    }
-                    else if (ColourDetected == 3) //Blue
-                    {
-                        Thread.Sleep(2000);
-                        et.Reverse();
-                        Thread.Sleep(2000);
-                        et.Turn90Right();
-                    }
-                    else //1 = Yellow
-                    {
-                        Thread.Sleep(2000);
-                        et.Reverse();
-                        Thread.Sleep(2000);
-                        et.Turn90Left();
+                        if (ColourDetected == 5) //Red
+                        {
+                            Thread.Sleep(2000);
+                            et.Reverse();
+                            Thread.Sleep(2000);
+                            et.Turn15Right();
+                        }
+                        else if (ColourDetected == 0) //Black
+                        {
+                            Thread.Sleep(2000);
+                            et.Reverse();
+                            Thread.Sleep(2000);
+                            et.Turn15Left();
+                        }
+                        else if (ColourDetected == 3) //Blue
+                        {
+                            Thread.Sleep(2000);
+                            et.Reverse();
+                            Thread.Sleep(2000);
+                            et.Turn90Right();
+                        }
+                        else //1 = Yellow
+                        {
+                            Thread.Sleep(2000);
+                            et.Reverse();
+                            Thread.Sleep(2000);
+                            et.Turn90Left();
+                        }
                     }
                 }
-
                 else if (Home == 1) //BlueRed
                 {
                     if (ColourDetected == 5) //Blue

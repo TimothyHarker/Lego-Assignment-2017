@@ -34,9 +34,10 @@ namespace GUI
         private void RedBlackBTN_Click_1(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine(et.DetectDistance());
+            bool ColourOne = false;
+            bool ColourTwo = false;
 
-            bool RainbowDetected = false;
-            while (RainbowDetected == false)
+            while (ColourOne != true || ColourTwo != true)
             {
                 Thread.Sleep(2000);
                 float distance = et.DetectDistance();
@@ -56,33 +57,50 @@ namespace GUI
                 //BlackRedLoop
                 if (ColourDetected == 5) //Red
                 {
+                    ColourOne = true;
                     Thread.Sleep(2000);
                     et.Reverse();
                     Thread.Sleep(2000);
                     et.Turn15Right();
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
                 }
                 else if (ColourDetected == 0) //Black
                 {
+                    ColourTwo = true;
                     Thread.Sleep(2000);
                     et.Reverse();
                     Thread.Sleep(2000);
                     et.Turn15Left();
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
                 }
                 else if (ColourDetected == 3) //Blue
                 {
+                    ColourOne = false;
+                    ColourTwo = false;
                     Thread.Sleep(2000);
                     et.Reverse();
                     Thread.Sleep(2000);
                     et.Turn90Right();
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
                 }
                 else //1 = Yellow
                 {
+                    ColourOne = false;
+                    ColourTwo = false;
                     Thread.Sleep(2000);
                     et.Reverse();
                     Thread.Sleep(2000);
                     et.Turn90Left();
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
                 }
             }
+
+            Debug.Write("Home Base Found");
+
         }
     }
 }
