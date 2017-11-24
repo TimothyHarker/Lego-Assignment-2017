@@ -16,7 +16,6 @@ namespace LegoClasses
         public async void ConnectToBrick()
         {
             brick = new Brick(new BluetoothCommunication("COM4"));
-            //brick = new Brick(new UsbCommunication());
             await brick.ConnectAsync();
             brick.Ports[InputPort.Four].SetMode(ColorMode.Color);
         }
@@ -24,8 +23,6 @@ namespace LegoClasses
         public async void Forward()
         {
             await brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.A | OutputPort.D, 20, 250, false);
-            //brick.BatchCommand.TurnMotorAtPower(OutputPort.A | OutputPort.D, 30);
-            //await brick.BatchCommand.SendCommandAsync();
         }
 
         public async void Reverse()
@@ -99,28 +96,5 @@ namespace LegoClasses
             float ColourDetected = Colours.Average();
             return ColourDetected;
         }
-
-        //public async void ReadColourTurn()
-        //{
-        //    float distance = brick.Ports[InputPort.Four].SIValue;
-        //    if (distance < 6)
-        //    {
-        //        DetectColour();
-        //        Console.WriteLine(DetectColour());
-        //        if (DetectColour() == 0)
-        //        {
-        //            Stop();
-        //            Reverse();
-        //            Turn15Right();
-        //        }
-        //        else
-        //        {
-        //            Stop();
-        //            Reverse();
-        //            Turn15Left();
-        //        }
-        //    }
-        //}
-
     }
 }
