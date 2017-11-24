@@ -104,9 +104,234 @@ namespace GUI
                     Debug.WriteLine(ColourTwo);
                 }
             }
-
+            
             Debug.Write("Home Base Found");
 
+        }
+
+        private void BlueRedBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(et.DetectDistance());
+            bool ColourOne = false;
+            bool ColourTwo = false;
+
+            while (ColourOne != true || ColourTwo != true)
+            {
+                Thread.Sleep(2000);
+                float distance = et.DetectDistance();
+                Debug.WriteLine("Distance Detected: " + distance);
+                while (distance > 6)
+                {
+                    et.Forward();
+                    Thread.Sleep(500);
+                    distance = et.DetectDistance();
+                    Debug.WriteLine("Distance Detected: " + distance);
+                    if (distance > 147)
+                    {
+                        et.Reverse();
+                    }
+                }
+
+                et.DetectColour();
+                float ColourDetected = et.DetectColour();
+                Console.WriteLine("Colour Detected: " + ColourDetected);
+
+                //BlueRedLoop
+                if (ColourDetected == 5) //Blue
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn15Right();
+                    ColourOne = false;
+                    ColourTwo = false;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+                else if (ColourDetected == 3) //Red
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn15Left();
+                    ColourOne = true;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+                else if (ColourDetected == 1) //Yellow
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn90Right();
+                    ColourOne = false;
+                    ColourTwo = false;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+                else //Black
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn90Left();
+                    ColourOne = true;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+            }
+
+            Debug.Write("Home Base Found");
+        }
+
+        private void BlueYellowBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(et.DetectDistance());
+            bool ColourOne = false;
+            bool ColourTwo = false;
+
+            while (ColourOne != true || ColourTwo != true)
+            {
+                Thread.Sleep(2000);
+                float distance = et.DetectDistance();
+                Debug.WriteLine("Distance Detected: " + distance);
+                while (distance > 6)
+                {
+                    et.Forward();
+                    Thread.Sleep(500);
+                    distance = et.DetectDistance();
+                    Debug.WriteLine("Distance Detected: " + distance);
+                    if (distance > 147)
+                    {
+                        et.Reverse();
+                    }
+                }
+
+                et.DetectColour();
+                float ColourDetected = et.DetectColour();
+                Console.WriteLine("Colour Detected: " + ColourDetected);
+
+                //BlueYellowLoop
+                if (ColourDetected == 1) //Yellow
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn15Right();
+                    ColourOne = true;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+                else if (ColourDetected == 3) //Blue
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn15Left();
+                    ColourTwo = true;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+                else if (ColourDetected == 0) //Black
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn90Right();
+                    ColourOne = false;
+                    ColourTwo = false;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+                else //Red
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn90Left();
+                    ColourOne = false;
+                    ColourTwo = false;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+            }
+
+            Debug.Write("Home Base Found");
+        }
+
+        private void YellowBlackBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(et.DetectDistance());
+            bool ColourOne = false;
+            bool ColourTwo = false;
+
+            while (ColourOne != true || ColourTwo != true)
+            {
+                Thread.Sleep(2000);
+                float distance = et.DetectDistance();
+                Debug.WriteLine("Distance Detected: " + distance);
+                while (distance > 6)
+                {
+                    et.Forward();
+                    Thread.Sleep(500);
+                    distance = et.DetectDistance();
+                    Debug.WriteLine("Distance Detected: " + distance);
+                    if (distance > 147)
+                    {
+                        et.Reverse();
+                    }
+                }
+
+                et.DetectColour();
+                float ColourDetected = et.DetectColour();
+                Console.WriteLine("Colour Detected: " + ColourDetected);
+
+                //YellowBlackLoop
+                if (ColourDetected == 0) //Black
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn15Right();
+                    ColourOne = true;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+                else if (ColourDetected == 1) //Yellow
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn15Left();
+                    ColourTwo = true;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+                else if (ColourDetected == 5) //Red
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn90Right();
+                    ColourOne = false;
+                    ColourTwo = false;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+                else //3 = Blue
+                {
+                    Thread.Sleep(2000);
+                    et.Reverse();
+                    Thread.Sleep(2000);
+                    et.Turn90Left();
+                    ColourOne = false;
+                    ColourTwo = false;
+                    Debug.WriteLine(ColourOne);
+                    Debug.WriteLine(ColourTwo);
+                }
+            }
+
+            Debug.Write("Home Base Found");
         }
     }
 }
